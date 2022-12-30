@@ -85,3 +85,46 @@
 - permiti dizer ao kubernetes quantos pods queremos de tal app
 - caso algum pode quebre/falhe, outro será criado para contemplar a quantidade de instancias específicadas yaml
 - lembrando que após a criação do container, as sondas que influenciam o status do pod
+
+### Selector
+- utilizado para identificar os pods que estão sendo executados
+
+### Template
+- aonde colocamos as especificações do nosso pod.
+
+## Deployments
+- possui vantagem sobre o replicaset, na verdade o deployment controla o replicaset
+- podemos controlar a forma de atualização das nossa aplicação
+
+## Horizontal pod autoscaler
+- modifica o deployment, replicaset ou replicationController, mudando o número de pos
+- conforme as metricas (memória ou cpu) salientadas no seu manifesto, de forma automática.
+
+### Estrategias de deployments
+- recreate
+  - substitui todos os pods pela nova versão
+  - não nos da margem para rollback
+- rollingupdate
+  - as implantações são mais lentas
+  - mais controladas
+  - um novo aplicativo será lançado aos poucos, pod por pod
+  - podemos informar valores nos campos maxSurge e maxUnavailable, para ajustar
+  - lembrando que a atualização seguirá, na substituição do pod, caso os atualizados subirem com sucesso
+    -maxUnavailable: permite que você ajuste o número maximo de pods indisponíveis durante a atualização
+    -maxSurge: permite ajustar o número máximo de pods que podemos atualizar imediatamente
+
+## DaemonSet
+- uma replica do pod e fixado 1 por nó
+- ideal para aplicações que possuem a finalidade de coleta de métricas
+
+## StatefulSets
+- ele mantem a identidade de cada nó e sua ordem
+- ideal para aplicações que possuem estado (statefull)
+- como banco de dados
+
+## Jobs
+- executar tarefas que podem ser concluidas, que não são ideais para app de long duração
+- ao finalizar a tarefa, o job acaba
+
+## CronJobs
+- recurso no kubernetes para execução de trabalho agendado

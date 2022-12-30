@@ -11,3 +11,5 @@ management:
       enabled: false
     prometheus:
       enabled: true
+app:
+  name: teste person
