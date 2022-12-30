@@ -128,3 +128,23 @@
 
 ## CronJobs
 - recurso no kubernetes para execução de trabalho agendado
+
+# Services e ingress
+- para acessar um aplicação dentro do cluster ou para aplicações se comunicarem dentro do cluster, precismos utilizar o service
+- existem 3 tipos de service:
+  -  cluster ip
+  - nodeport
+  - external name
+  - load balance
+- uma outra forma de acessar uma app dentro do clusters, é através de roteamente dns, aonde entra o ingress
+
+
+## Services Dns dentro do kubernetes
+- para acessar um service dentro do seu namespace, passamos apenas o nome do service
+- para acessar um service em outro namespace, precisamos passar o service.namespace.svc.cluster.local
+
+### Proxy
+- existem alguns algoritmos que podemos configurar no service para efetuar um redirecionamento das requisições aos pods vinculados (pelo nome do pod no selector)
+- por padrão é o algoritmo round robin
+ - simplesmente o pod usado na requisição vai para o final da fila
+ - ele será novamente acionado, quando chegar a ser o primeiro da fila
