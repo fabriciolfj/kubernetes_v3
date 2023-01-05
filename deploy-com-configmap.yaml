@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-pod-mount-cm
+spec:
+  selector:
+    matchLabels:
+      app: my-pod-mount-cm
+  template:
+    metadata:
+      labels:
+        app: my-pod-mount-cm
+    spec:
+      containers:
+      - name: my-pod-mount-cm
+        image: gcr.io/google-containers/busybox
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+      volumes:
+        - name: my-config-name
+          configMap:
+            name: my-env-config-map
+      restartPolicy: Always

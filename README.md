@@ -148,3 +148,26 @@
 - por padrão é o algoritmo round robin
  - simplesmente o pod usado na requisição vai para o final da fila
  - ele será novamente acionado, quando chegar a ser o primeiro da fila
+
+### ClusterIp
+- tipo se serviço que será acessado internamente no cluster apenas
+
+### NodePort
+- gera uma porta para acesso externo ao nosso service
+
+### ingress
+- faz o roteamento de chamadas para os serviços, através de um dns
+- somente o ingress não funcionará, precisamos de um ingress-controller, o mais famoso é o nginx controller
+```
+para habilitar no minikube:
+minikube addons enable ingress
+```
+
+# Configmap
+- aonde podemos colocar as configurações das nossas aplicações, que estão rodando nos pods
+- podemos injetar as configurações inseridas no configmap as apps, via arquivo ou variável de ambiente
+  - arquivo utiliza volumes 
+
+# Secrets
+- armazenamento de informações sensíveis, que podem ser utilizadas pelas nossas apps.
+- texto armazenado é em base64

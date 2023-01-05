@@ -5,7 +5,7 @@ metadata:
   labels:
     app: myapp
 spec:
-  replicas: 3
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -21,7 +21,10 @@ spec:
     spec:
       containers:
         - name: myapp
-          image: fabricio211/person-service:1.0.2
+          image: fabricio211/person-service:1.0.3
+          env:
+            - name: SPRING_CONFIG_LOCATION
+              value: file:/etc/config/application.yml
           readinessProbe:
             httpGet:
               port: 8080
@@ -45,10 +48,20 @@ spec:
             successThreshold: 1 #quantos sucessos para marcar o pod como pronto
           resources:
             requests:
-              memory: "50Mi"
+              memory: "150Mi"
               cpu: "100m"
             limits:
-              memory: "200Mi"
-              cpu: "500m"
+              memory: "500Mi"
+              cpu: "200m"
           ports:
             - containerPort: 8080
+          volumeMounts:
+            - mountPath: /etc/config
+              name: appname
+      volumes:
+        - name: appname
+          configMap:
+            name: appname
+            items:
+              - key: application.yml
+                path: application.yml
