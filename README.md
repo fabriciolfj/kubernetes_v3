@@ -171,3 +171,8 @@ minikube addons enable ingress
 # Secrets
 - armazenamento de informações sensíveis, que podem ser utilizadas pelas nossas apps.
 - texto armazenado é em base64
+
+# Atualização
+```
+A partir da versão 1.27 do Kubernetes, você pode aproveitar as vantagens do recurso chamado “In-Place Vertical Pod Scaling” . Ele permite que os usuários redimensionem os recursos de CPU/memória alocados para pods sem reiniciar os contêineres. Essa abordagem pode nos ajudar a acelerar a inicialização do Java no Kubernetes e, ao mesmo tempo, manter limites de recursos adequados (especialmente limites de CPU) para o aplicativo. Você pode ler mais sobre isso no seguinte artigo: https://piotrminkowski.com/2023/08/22/resize-cpu-limit-to-speed-up-java-startup-on-kubernetes/ .
+```
