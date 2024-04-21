@@ -181,3 +181,4 @@ A partir da versão 1.27 do Kubernetes, você pode aproveitar as vantagens do re
 minikube start --memory='8g' \
   --feature-gates=InPlacePodVerticalScaling=true
 ```
+- para aplicar esse recurso, usamos a policy do recurso kyverno (exitem um exmplo nesse projeto)
