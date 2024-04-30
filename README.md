@@ -174,6 +174,10 @@ minikube addons enable ingress
 
 # cryostat
 - pegar os arquivos gerados pelo java flight recorver nos containers, para analise (dentro do k8s)
+```
+helm install <release_name> \
+    https://github.com/cryostatio/cryostat-helm/releases/download/v0.1.3/cryostat-0.1.3.tgz
+```
 
 # Atualização
 ```
