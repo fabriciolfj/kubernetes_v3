@@ -177,7 +177,12 @@ minikube addons enable ingress
 ```
 helm install <release_name> \
     https://github.com/cryostatio/cryostat-helm/releases/download/v0.1.3/cryostat-0.1.3.tgz
+    
+helm update repo
+
+kubectl create -f https://operatorhub.io/install/cryostat-operator.yaml    
 ```
+
 
 # Atualização
 ```
